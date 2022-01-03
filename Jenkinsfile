@@ -1,7 +1,9 @@
 pipeline {
   agent any
   environment {
+    registry = "arunakilan/docker-demo"
     dockerImage = ''
+    tag = "v1"
     
   }
   stages {
@@ -12,7 +14,9 @@ pipeline {
     }
     stage('build docker image') {
       steps {
-        dockerImage = ''
+        script {
+          dockerImage = docker build registry + tag
+        }
       }
     }
   }
