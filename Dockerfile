@@ -1,3 +1,3 @@
 FROM alpine
-RUN apt update
+RUN apk update
 CMD echo "hello world"
