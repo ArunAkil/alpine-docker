@@ -32,7 +32,7 @@ pipeline {
     }
     post {
         success {
-            mail to:"s.arunkumar413@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: job '${env.JOB_NAME} [${env.BUILD_NUMBER}] \n check console output at ${env.BUID_URL} \n "build successfully."
+            mail to:"s.arunkumar413@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: job '${env.JOB_NAME} [${env.BUILD_NUMBER}] check console output at ${env.BUID_URL} "build successfully."
         }
         failure {
             mail to:"s.arunkumar413@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
