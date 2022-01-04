@@ -31,13 +31,6 @@ pipeline {
            
     }
     post {
-        success {
-            mail to:"s.arunkumar413@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
-        }
-        failure {
-            mail to:"s.arunkumar413@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
-        }
         always{
             emailext (
           subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
@@ -46,6 +39,13 @@ pipeline {
           recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         )
         }
+        success {
+            mail to:"s.arunkumar413@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "build successfull"
+        }
+        failure {
+            mail to:"s.arunkumar413@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
+        }
+        
     }
 }
 
