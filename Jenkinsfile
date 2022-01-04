@@ -3,7 +3,7 @@ pipeline {
        registry = "arunakilan/docker-demo"
        registryCredential = 'docker'
        dockerImage = ''
-        doError = '1'
+        
     }
     agent any
        stages {
@@ -28,23 +28,7 @@ pipeline {
                 }
             }
         }
-           stage('Error') {
-               when{
-                   expression{ doError == '1' }
-               }
-               steps{
-                   echo "Failure"
-                   error "failure test. It's work"
-               }
-           }
-           stage('success') {
-               when{
-                   expression{ doError == '0' }
-               }
-               steps{
-                   echo "ok"
-               }
-           }
+           
     }
     post {
         always {
