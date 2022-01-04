@@ -39,13 +39,6 @@ pipeline {
           recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         )
         }
-        success {
-            mail to:"s.arunkumar413@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "build successfull"
-        }
-        failure {
-            mail to:"s.arunkumar413@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
-        }
-        
     }
 }
 
