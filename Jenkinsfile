@@ -31,13 +31,11 @@ pipeline {
            
     }
     post {
-        always {
-            echo 'I will always say Hello again!'
-            
-            emailext body: "${DEFAULT_CONTENT}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "${DEFAULT_SUBJECT}"
-            
+        success {
+            mail to:"s.arunkumar413@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
+        }
+        failure {
+            mail to:"s.arunkumar413@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
         }
     }
 }
