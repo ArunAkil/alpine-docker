@@ -23,8 +23,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker') {
                         dockerImage.push("${env.BUILD_NUMBER}")
-                        dockerImage.push("latest")
-                    }
+                        }
                 }
             }
         }
